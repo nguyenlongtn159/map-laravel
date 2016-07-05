@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +15,30 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('hoclaravel', function (){
+    echo "Chào mừng đến với khóa học Laravel";
+});
+Route::get('/language',['as'=>'language','uses'=>'LangController@show']);
+Route::get('/language2','LangController@Lang');
+
+Route::get('/map', function () {
+    return view('map');
+
+});
+Route::post('/language','LangController@changeLang');
+
+Route::get('/delete', function () {
+    Session::flush();
+    return Redirect::to('/');
+
+});
+Route::group(['prefix'=>'lang'],function(){
+    Route::get('show',['as'=>'lang.showLang','uses'=>'LangController@showLang']);
+    Route::get('add',['as'=>'lang.getAdd','uses'=>'LangController@getAdd']);
+    Route::post('add',['as'=>'lang.postAdd','uses'=>'LangController@postAdd']);
+    Route::get('edit/{id}',['as'=>'lang.getEdit','uses'=>'LangController@getEdit']);
+    Route::post('edit/',['as'=>'lang.postEdit','uses'=>'LangController@postEdit']);
+    Route::get('delete/{id}',['as'=>'lang.getDelete','uses'=>'LangController@getDelete']);
+});
+
+
