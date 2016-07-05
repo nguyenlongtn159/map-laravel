@@ -34,6 +34,7 @@ Route::get('/delete', function () {
 });
 Route::group(['prefix'=>'lang'],function(){
     Route::get('show',['as'=>'lang.showLang','uses'=>'LangController@showLang']);
+    Route::get('change',['as'=>'lang.changeLang','uses'=>'LangController@changeLang2']);
     Route::get('add',['as'=>'lang.getAdd','uses'=>'LangController@getAdd']);
     Route::post('add',['as'=>'lang.postAdd','uses'=>'LangController@postAdd']);
     Route::get('edit/{id}',['as'=>'lang.getEdit','uses'=>'LangController@getEdit']);
@@ -42,3 +43,7 @@ Route::group(['prefix'=>'lang'],function(){
 });
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

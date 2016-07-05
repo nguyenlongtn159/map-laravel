@@ -33,7 +33,7 @@ class LangRequest extends Request
     }
     public function messages(){
         return[
-            'key.required' => 'Please enter key!',
+            'key.required' => 'please enter key!',
             'key.unique'  => 'This key is exist!',
             'eng.required'  => 'Please enter eng!',
             'vn.required'  => 'Please enter vn!'

@@ -42,7 +42,7 @@ public function show(){
         DB::table('sessions')
             ->where('id', 2)
             ->update(['lang' => $lang]);
-        return redirect('/');
+        return redirect('lang/change');
     }
         public function showLang(){
             $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
@@ -50,7 +50,9 @@ public function show(){
             Return view('lang',compact('la','se'));
 
         }
-
+    public function changeLang2(){
+        Return view('changelang');
+    }
 
     public function getAdd(){
         return redirect()->route('lang.showLang');

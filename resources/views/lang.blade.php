@@ -37,7 +37,7 @@
         </form>
         {!! Tran('list') !!} :
         <table class="small-table2">
-            <tr><td>ID:</td><td>{!! Tran('key') !!}</td><td>Eng:</td><td>Vn:</td><td>{{ Tran('edit') }}</td><td>{{ Tran('delete') }}</td></tr>
+            <tr><td>ID:</td><td>{!! Tran('key:') !!}</td><td>Eng:</td><td>Vn:</td><td>{{ Tran('edit') }}</td><td>{{ Tran('delete') }}</td></tr>
         @foreach($la as $item=>$val)
 
                 <?php

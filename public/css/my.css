@@ -1,6 +1,5 @@
 body {
-    background-color: #1e425d;
-    background-image: url('404_highlight.png');
+    background: #002233 url('404_highlight.png')  top right no-repeat fixed;
     background-position: center;
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
@@ -31,6 +30,7 @@ h1 {
     line-height: 20px;
     padding-bottom: 0px;
     margin-top: 0px;
+
 }
 h3 {
     padding-top: 5px;
@@ -49,7 +49,7 @@ table {
 .header {
     font-size: 24px;
     font-stretch: condensed;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 20px;
     /* position: relative;
     /* z-index: 3; */
@@ -60,6 +60,8 @@ table {
     top:0;
     left:0;
     width:100%;
+    font-weight: 600;
+    font-family: 'Khand', sans-serif;
 }
 .left {
     float: left;
@@ -85,17 +87,26 @@ table {
     margin-right: 5px;
 }
 .left select {
-    width: 135px;
+    width: 140px;
     margin: 0px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     -webkit-appearance: none;        /*Removes default chrome and safari style*/
     -moz-appearance: none;
+
   /*  background-image: url('up.png');
     background-size: 15%;
     background-repeat: no-repeat;
     background-position: right; */
+}
+select:active, select:hover {
+    background-color: #31b0d5;
+    color: white;
+}
+label:active:after, label:hover:after{
+    background-color: #31b0d5;
+    color: white;
 }
 .left label:after{
     right:25px;
@@ -103,6 +114,19 @@ table {
 .center {
     text-align: center;
     color: white;
+}
+.center-select {
+    text-align: left;
+    color: white;
+    padding:0px;
+    margin: 0px;
+    width: 90px;
+}
+.center-select select{
+    width: 55px;
+    -webkit-appearance: none;        /*Removes default chrome and safari style*/
+    -moz-appearance: none;
+    padding: 2px;
 }
 .right {
     text-align: right;
@@ -126,13 +150,13 @@ table {
 }
 .right-header input{
     border-radius: 20px;
-    background-image: url('search.png');
-    background-size: 10%;
-    background-repeat: no-repeat;
-    background-position: right;
     height: 20px;
     width: 230px;
+    background:white url('search.png') top right +5px no-repeat  ;
+    background-size: 10%;
 }
+
+
 .right-select {
     text-align: right;
     color: white;
@@ -145,6 +169,13 @@ table {
     -webkit-appearance: none;        /*Removes default chrome and safari style*/
     -moz-appearance: none;
     padding: 2px;
+}
+.right a{
+    color: #5bc0de;
+}
+.center-select select{
+    -webkit-appearance: menulist-button ;        /*Removes default chrome and safari style*/
+    -moz-appearance: menulist-button;
 }
 .footer {
     height: 2em;
@@ -169,14 +200,14 @@ table {
     text-align: center;
     color: white;
     padding: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -280px;
+    margin-left: -320px;
+
 }
-.error img {
-    display: block;
-    margin-left: auto;
-   /* margin-top: 40px; */
-    margin-right: auto;
-    margin-bottom: 0px;
-}
+
 .container{
     margin-top: 75px;
 }
@@ -192,7 +223,7 @@ table {
     border-radius: 8px;
 }
 label {position:relative}
-label:after {
+table label:after {
     content:'‣';
     font:25px "Consolas", monospace;
     color:black;
