@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Http\Request;
 use App\Lang;
-use App\Session;
+use App\Select_language;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 use App\Http\Requests;
@@ -32,21 +32,21 @@ public function show(){
     //  $data = DB::table('langs')->where('key','home')->value('vn');
         //DESC
         $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
-        $se = Session::select('id','lang')->get()->toArray();
+        $se = Select_language::select('id','lang')->get()->toArray();
         Return view('lang',compact('la','se'));
 
     }
     public  function changeLang(Request $request)
     {
         $lang = $request->input('lang');
-        DB::table('sessions')
+        DB::table('select_languages')
             ->where('id', 2)
             ->update(['lang' => $lang]);
         return redirect('lang/change');
     }
         public function showLang(){
             $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
-            $se = Session::select('id','lang')->get()->toArray();
+            $se = Select_language::select('id','lang')->get()->toArray();
             Return view('lang',compact('la','se'));
 
         }
@@ -78,17 +78,17 @@ public function show(){
         $eng = $request->input('eng');
         $vn = $request->input('vn');
         DB::table('langs')
-            ->where('id', $id)
+           ->where('id', $id)
             ->update(['key' => $key, 'eng' => $eng, 'vn' => $vn]);
         $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
-        $se = Session::select('id','lang')->get()->toArray();
+        $se = Select_language::select('id','lang')->get()->toArray();
         return redirect()->route('lang.showLang');
 
     }
     public function getDelete($id){
         Lang::select('id','key','eng','vn')->where('id', '=', $id)->delete();
         $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
-        $se = Session::select('id','lang')->get()->toArray();
+        $se = Select_language::select('id','lang')->get()->toArray();
         return redirect()->route('lang.showLang');
     }
 

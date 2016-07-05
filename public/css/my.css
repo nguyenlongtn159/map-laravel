@@ -135,7 +135,7 @@ label:active:after, label:hover:after{
     padding-right: 10px;
 }
 .right select {
-    width: 100px;
+    width: 110px;
     height:25px;
 }
 .right-header {
@@ -162,10 +162,10 @@ label:active:after, label:hover:after{
     color: white;
     padding:0px;
     margin: 0px;
-    width: 90px;
+    width: 100px;
 }
 .right-select select{
-    width: 55px;
+    width: 60px;
     -webkit-appearance: none;        /*Removes default chrome and safari style*/
     -moz-appearance: none;
     padding: 2px;
