@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Session extends Migration
+class Select_language extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Session extends Migration
     public function up()
     {
         //
-        Schema::create('sessions', function (Blueprint $table)
+        Schema::create('select_languages', function (Blueprint $table)
         {
             $table->increments('id');
             $table->string('lang');
@@ -30,6 +30,6 @@ class Session extends Migration
     public function down()
     {
         //
-        Schema::drop('sessions');
+        Schema::drop('select_languages');
     }
 }

@@ -39,8 +39,23 @@ public function show(){
     public  function changeLang(Request $request)
     {
         $lang = $request->input('lang');
+		$da = DB::table('select_languages')->first();
+		if(isset($da)){
+		$id = $da->id;	
+		}
+		elseif(!isset($da)){
+			        DB::table('select_languages')->insert([
+            array( 'lang' => 'eng'),
+            array( 'lang' => 'vn')
+        ]);
+		$da = DB::table('select_languages')->first();
+		$id = $da->id;
+		}
+		
+		
+   
         DB::table('select_languages')
-            ->where('id', 2)
+            ->where('id', $id)
             ->update(['lang' => $lang]);
         return redirect('lang/change');
     }

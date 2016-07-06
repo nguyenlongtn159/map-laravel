@@ -58,7 +58,7 @@ class MapController extends Controller
         }
 $content.='</markers> ';
         Storage::disk('local')->put('file.xml', $content);
-        return "<a href='storage/app/file.xml'>a</a>";
+        return view('map');
        // File::put(storage_path() . '{!! url("/public/xml/file.xml") !!}', $content);
 
       //  return Response::make($content, 200)->header('Content-Type', 'application/xml');
