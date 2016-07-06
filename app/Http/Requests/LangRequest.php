@@ -27,7 +27,7 @@ class LangRequest extends Request
             //
             'key' => 'required|unique:langs,key',
             'eng' => 'required:langs,eng',
-            'vn'  => 'required:langs.vn'
+            'vn'  => 'required:langs,vn'
 
         ];
     }

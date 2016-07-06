@@ -37,14 +37,20 @@ Route::group(['prefix'=>'lang'],function(){
     Route::post('edit/',['as'=>'lang.postEdit','uses'=>'LangController@postEdit']);
     Route::get('delete/{id}',['as'=>'lang.getDelete','uses'=>'LangController@getDelete']);
 });
+Route::group(['prefix'=>'map'],function(){
+    Route::get('show',['as'=>'map.showMap','uses'=>'MapController@showMap']);
+    Route::get('add',['as'=>'map.getAdd','uses'=>'MapController@getAdd']);
+    Route::post('add',['as'=>'map.postAdd','uses'=>'MapController@postAdd']);
+    Route::get('edit/{id}',['as'=>'map.getEdit','uses'=>'MapController@getEdit']);
+    Route::post('edit/',['as'=>'map.postEdit','uses'=>'MapController@postEdit']);
+    Route::get('delete/{id}',['as'=>'map.getDelete','uses'=>'MapController@getDelete']);
+});
 
 
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/map',['as'=>'showMap','uses'=>'MapController@showMap']);
 
 Route::get('getMap', ['as' => 'getMap2', function () {
     if(Request::ajax()){

@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-    <p>{!! Tran('content') !!} {!! Tran('map') !!}</p>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7mIeAhiynB4nSAZEeP1069A_0HaCcnPg" type="text/javascript"></script>
   <!--  <script scr="{{asset('public/js/my.js')}}" type="text/javascript"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -101,7 +100,119 @@
     </script>
 
     <body onload="load()">
-    <div class="" id="map" style="width: 500px; height: 300px"></div>
+    <div id="map" class="map"></div>
+    
+     @if(isset($edit))
+        <table class="small-table">
+            @foreach($edit as $item=>$val)
+                <br /> {!! Tran('edit') !!} 
+                <form action="{!! url('/map/edit')!!}" method="post"><br />
+                    <table class="small-table">
+                        <input type="hidden" name="id" value="{!! $val['id']  !!}" />
+                        <tr><td>{!! Tran('name') !!} </td><td><input type="text" name="name" value="{!! $val['name']  !!}" /></td><td>
+                                @if (count($errors) > 0)
+                                    {!!  $errors->first("name")!!}
+                                @endif
+                            </td></tr>
+                        <tr><td>Address:</td><td><input type="text" name="address" value="{!! $val['address']  !!}"  /></td><td>
+                                @if (count($errors) > 0)
+                                    {!!  $errors->first("address")!!}
+                                @endif
+                            </td></tr>
+                        <tr><td>Type: </td><td> <input type="text" name="type" value="{!! $val['type']  !!}"  /></td><td>
+                                @if (count($errors) > 0)
+                                    {!!  $errors->first("type")!!}
+                                @endif
+                            </td></tr>
+                            <tr><td>Lat: </td><td> <input type="number" step="any" name="lat" value="{!! $val['lat']  !!}"  /></td><td>
+                                @if (count($errors) > 0)
+                                    {!!  $errors->first("lat")!!}
+                                @endif
+                            </td></tr>
+                            <tr><td>Lng: </td><td> <input type="number" step="any" name="lng" value="{!! $val['lng']  !!}"  /></td><td>
+                                @if (count($errors) > 0)
+                                    {!!  $errors->first("lng")!!}
+                                @endif
+                            </td></tr>
+                        <tr><td>
+                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                <input type="submit" value="OK" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                @endforeach
+                @endif
+       @if(!isset($edit))          
+     <br /> {!! Tran('add') !!} 
+        <form action="{!! Route('map.getAdd') !!}" method="post">
+            <table class="small-table">
+                <tr><td>{!! Tran('name') !!}: </td><td><input type="text" name="name" /></td>
+                    <td>
+                        @if (count($errors) > 0)
+                            {!!  $errors->first("name")!!}
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td><td><input type="text" name="address" /></td>
+                    <td>
+                        @if (count($errors) > 0)
+                            {!!  $errors->first("address")!!}
+                        @endif
+                    </td>
+                </tr>
+                <tr><td>Type: </td>
+                    <td> <input type="text" name="type" /></td>
+                    <td>
+                        @if (count($errors) > 0)
+                            {!!  $errors->first("type")!!}
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                <tr><td>Lat: </td>
+                    <td> <input type="number" step="any" name="lat" /></td>
+                    <td>
+                        @if (count($errors) > 0)
+                            {!!  $errors->first("lat")!!}
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                	<tr><td>Lng: </td>
+                    <td> <input type="number" step="any" name="lng" /></td>
+                    <td>
+                        @if (count($errors) > 0)
+                            {!!  $errors->first("lng")!!}
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" name="_token" value="{!! csrf_token() !!}"></td>
+                    <td> <input type="submit" value="OK Thêm" /></td>
+                </tr>
+            </table>
+        </form>
+      
+    <br />{!! Tran('list')!!}:<table class="small-table2">
+    	<tr><td>Name:</td><td>Address:</td><td>Type:</td></tr>
+    	@if(isset($query))
+    	@foreach($query as $val)
+    	<?php
+    	echo "<tr><td>".$val['name']."</td><td>".$val['address']."</td><td>".$val['type']."</td><td>";	
+		echo "<a href='"; ?>
+                    {!!url('map/edit')!!}<?php
+                    echo "/".$val['id']."'>Edit</a></td><td>";
+                    echo "<a href='"; ?>
+                    {!!url('map/delete')!!}<?php
+                    echo "/".$val['id']."'>Delete</a></td></tr></tr>";
+                 ?>
+    	
+    	@endforeach
+    </table>
+    @endif
+    @endif
     </body>
 
 
