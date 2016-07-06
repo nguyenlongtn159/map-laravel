@@ -21,10 +21,8 @@ Route::get('hoclaravel', function (){
 Route::get('/language',['as'=>'language','uses'=>'LangController@show']);
 Route::get('/language2','LangController@Lang');
 
-Route::get('/map', function () {
-    return view('map');
+Route::get('/map','MapController@Map');
 
-});
 Route::post('/language','LangController@changeLang');
 
 Route::get('/delete', function () {
@@ -47,3 +45,14 @@ Route::group(['prefix'=>'lang'],function(){
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/getRequest',['as'=>'showMap','uses'=>'MapController@showMap']);
+
+Route::get('getMap', ['as' => 'getMap2', function () {
+    if(Request::ajax()){
+        return view('map_xml');
+    }
+    else  return view('map_xml');
+
+    //
+}]);
