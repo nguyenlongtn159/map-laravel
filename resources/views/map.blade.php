@@ -30,7 +30,8 @@
                
                	center: new google.maps.LatLng(21.022773,105.801944),
 				zoom: 5,
-				mapTypeId: 'roadmap'
+				mapTypeId: 'roadmap',
+				fullscreenControl: true
             });
             var infoWindow = new google.maps.InfoWindow;
           url = "{!! url('/storage/app/file.xml')!!}";

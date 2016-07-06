@@ -15,6 +15,8 @@
             </form></td>
 
     </tr>
-        <tr><td width="50%" class="right"><a href="{!! url('/language2') !!}">{!! Tran('list') !!} {!! Tran('key:') !!}</a></td></tr>
+        <tr><td width="50%" class="right"><a href="{!! url('/language2') !!}">{!! Tran('list') !!} {!! Tran('key:') !!}</a></td>
+        	<td><a href="{!!url('/test')!!}">ex. phân trang</a></td>
+        	</tr>
     </table>
 @endsection

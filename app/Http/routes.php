@@ -60,3 +60,4 @@ Route::get('getMap', ['as' => 'getMap2', function () {
 
     //
 }]);
+Route::resource('test','LangController@test');

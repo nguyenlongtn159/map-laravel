@@ -28,6 +28,10 @@ public function show(){
 
     return view('lang');
 }
+public function test(Request $request){
+	        $items = Lang::orderBy('id','DESC')->paginate(5);
+        return view('test',compact('items'))->with('i', ($request->input('page', 1) - 1) * 5); //lấy giá trị ?page=xxx, default= 1; rùi - 1 , nhân 5 để tính Item
+}
     public function Lang(){
     //  $data = DB::table('langs')->where('key','home')->value('vn');
         //DESC
@@ -60,7 +64,7 @@ public function show(){
         return redirect('lang/change');
     }
         public function showLang(){
-            $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->toArray();
+            $la = Lang::select('id','key','eng','vn')->orderBy('key','ASC')->get()->paginate(15)->toArray();
             $se = Select_language::select('id','lang')->get()->toArray();
             Return view('lang',compact('la','se'));
 
